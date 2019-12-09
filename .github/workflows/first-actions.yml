@@ -6,9 +6,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Run a one-line script
-        run: echo "Hello World!"
-      - name: Run a multi-line script
-        run: |
-          echo Add others actions to build
-          echo test, and deploy your project
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - name: Run install
+        run: npm install
+      - name: Run test
+        run: npm test
+      - name: Run build
+        run: npm run build
